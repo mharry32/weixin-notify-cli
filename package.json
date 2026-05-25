@@ -1,7 +1,7 @@
 {
   "name": "@dev32/weixin-notify-cli",
   "version": "0.1.0",
-  "description": "Small unofficial CLI for sending Weixin notifications from local automations.",
+  "description": "Unofficial local-first CLI for sending Weixin text messages from Codex, Claude Code, scripts, and CI.",
   "type": "module",
   "bin": {
     "weixin-notify": "bin/weixin-notify.js"
@@ -21,7 +21,9 @@
     "notification",
     "cli",
     "automation",
-    "codex"
+    "codex",
+    "claude-code",
+    "agent-workflows"
   ],
   "author": "dev32",
   "license": "MIT",

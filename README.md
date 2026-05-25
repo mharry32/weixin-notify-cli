@@ -1,12 +1,10 @@
 # Weixin Notify CLI
 
-Small unofficial CLI for sending Weixin/WeChat text notifications from local automations.
+Weixin Notify CLI is an unofficial, local-first command-line tool for sending outbound Weixin text messages through Tencent's iLink Bot API. It is built for Codex, Claude Code, shell scripts, cron jobs, CI runners, and other agent workflows that need a one-shot completion message without running a daemon, chatbot runtime, or inbound listener.
 
-This project is not affiliated with Tencent or WeChat. It uses observed behavior of Tencent's iLink Bot API, which may change, rate-limit, or stop working at any time.
+This project is not affiliated with Tencent or WeChat. The iLink API may change, rate-limit, or stop working at any time.
 
 ## Install
-
-After the package is published:
 
 ```bash
 npm install -g @dev32/weixin-notify-cli
@@ -33,13 +31,15 @@ weixin-notify sync-once --timeout 35 --json
 weixin-notify logout
 ```
 
-Recommended automation usage:
+## Agent Workflows
+
+The recommended agent path is stdin plus JSON:
 
 ```bash
 printf '%s' "$MESSAGE" | weixin-notify send --stdin --json
 ```
 
-Use `--dry-run --json` to validate credentials, target allowlist behavior, chunking, and redacted payload shape without sending a message.
+This works well from Codex, Claude Code, shell scripts, cron jobs, and CI runners because the command is bounded, non-daemonized, and returns stable JSON. Use `--dry-run --json` for previews and `--no-input` or `WEIXIN_NOTIFY_PROMPT_DISABLED=1` in unattended runs.
 
 ## Output
 
