@@ -1,0 +1,42 @@
+{
+  "name": "@dev32/weixin-notify-cli",
+  "version": "0.1.0",
+  "description": "Small unofficial CLI for sending Weixin notifications from local automations.",
+  "type": "module",
+  "bin": {
+    "weixin-notify": "bin/weixin-notify.js"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [
+    "weixin",
+    "wechat",
+    "notification",
+    "cli",
+    "automation",
+    "codex"
+  ],
+  "author": "dev32",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mharry32/weixin-notify-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mharry32/weixin-notify-cli/issues"
+  },
+  "homepage": "https://github.com/mharry32/weixin-notify-cli#readme",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "qrcode-terminal": "^0.12.0"
+  }
+}

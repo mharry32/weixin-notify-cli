@@ -1,0 +1,12 @@
+node_modules/
+*.tgz
+npm-debug.log*
+.DS_Store
+coverage/
+dist/
+build/
+tmp/
+temp/
+.env
+.env.*
+dev-state/
