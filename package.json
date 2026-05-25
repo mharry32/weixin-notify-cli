@@ -1,6 +1,6 @@
 {
   "name": "@dev32/weixin-notify-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Unofficial local-first CLI for sending Weixin text messages from Codex, Claude Code, scripts, and CI.",
   "type": "module",
   "bin": {
