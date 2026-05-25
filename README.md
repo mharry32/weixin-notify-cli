@@ -17,6 +17,24 @@ npm install
 npm link
 ```
 
+## First-Time Setup
+
+QR login saves local bot credentials, but some Weixin accounts do not allow the bot to send an outbound message until the user has first opened the conversation. After the first successful `login`, send any short message to the newly bound bot from Weixin, then refresh local sync state:
+
+```bash
+weixin-notify login
+# In Weixin, send a short message such as "hi" to the bot.
+weixin-notify sync-once --json
+weixin-notify status --json
+```
+
+After that handshake, preview and send:
+
+```bash
+printf '%s' 'test from weixin-notify' | weixin-notify send --stdin --dry-run --json
+printf '%s' 'test from weixin-notify' | weixin-notify send --stdin --json
+```
+
 ## Commands
 
 ```bash
@@ -40,6 +58,8 @@ printf '%s' "$MESSAGE" | weixin-notify send --stdin --json
 ```
 
 This works well from Codex, Claude Code, shell scripts, cron jobs, and CI runners because the command is bounded, non-daemonized, and returns stable JSON. Use `--dry-run --json` for previews and `--no-input` or `WEIXIN_NOTIFY_PROMPT_DISABLED=1` in unattended runs.
+
+If an automation reports that credentials are present but sending still fails after a fresh login, complete the first-time Weixin handshake above before retrying.
 
 ## Output
 
@@ -115,4 +135,4 @@ Keep the state directory private. A copied `config.json` can contain active bot 
 
 ## Limitations
 
-This is a one-shot notification sender. It does not run a daemon, scheduler, inbound listener, model, agent runtime, OpenClaw, or Hermes. Target management commands are planned future work; the first release keeps the login and send path small.
+This is a one-shot notification sender. It does not run a daemon, scheduler, inbound listener, model, agent runtime, OpenClaw, or Hermes. First-time sending may require the Weixin user to message the bot once after QR login before outbound sends succeed. Target management commands are planned future work; the first release keeps the login and send path small.
